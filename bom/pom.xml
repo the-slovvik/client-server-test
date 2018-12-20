@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.slovvik</groupId>
+    <artifactId>bom</artifactId>
+    <version>${client.version}</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compilier.source>11</maven.compilier.source>
+        <maven.compilier.target>11</maven.compilier.target>
+        <maven.compilier.version>3.8.0</maven.compilier.version>
+        <junit-jupiter-engine.version>${junit-jupiter-api.version}</junit-jupiter-engine.version>
+        <junit-jupiter-api.version>5.3.2</junit-jupiter-api.version>
+        <lombok.version>1.18.4</lombok.version>
+        <client.version>1.0-SNAPSHOT</client.version>
+        <server.version>1.0-SNAPSHOT</server.version>
+        <client-server-contract.version>1.0-SNAPSHOT</client-server-contract.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compilier.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>pl.slovvik</groupId>
+                <artifactId>client</artifactId>
+                <version>${client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.slovvik</groupId>
+                <artifactId>server</artifactId>
+                <version>${server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.slovvik</groupId>
+                <artifactId>client-server-contract</artifactId>
+                <version>${client-server-contract.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!--######TESTS######-->
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter-engine.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+</project>
